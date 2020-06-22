@@ -1,0 +1,51 @@
+﻿@model IEnumerable<lab02.Models.books>
+
+@{
+    ViewBag.Title = "List Book";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List Book</h2>
+<a href="/getbook/Create" style="font-size: 30px">Create book</a>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Author
+        </th>
+        <th>
+            Image
+        </th>
+        <th>
+            Edit
+        </th>
+        <th>
+            Delete
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                <img src="@item.Image" width="95" />
+            </td>
+            <td>
+                @*<a href="~/Views/edit/edit.cshtml">~/Views/edit/edit.cshtml</a>*@
+                <a href="/edit/edit/?id=@item.Id">Edit</a>
+            </td>
+            <td>
+                <a href="/View/getbook/@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
